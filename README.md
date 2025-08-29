@@ -62,11 +62,11 @@ Description
 
  📸 Screenshots
 
-    Candlestick + Bollinger Bands
-    ![Chart Example](home.png)
+Candlestick + Bollinger Bands
+![Chart Example](home.png)
 
-    Settings Panel
-    ![Settings Example](/home.png)
+Settings Panel
+![Settings Example](/home.png)
 
  ⚡ Quick Start
 

@@ -1,15 +1,25 @@
 "use client"
 import React from "react"
+import Image from "next/image"
 
 export default function TopBar() {
   return (
     <header className="w-full flex items-center justify-between px-4 py-2 bg-gray-800 text-white border-b border-gray-700">
       <div className="flex items-center gap-3">
-        <div className="text-xl font-semibold">find-scan</div>
+        {/* Logo + Name */}
+        <div className="flex items-center gap-2">
+          <Image src="/logo.jpg" width={8} height={8} alt="Logo" className="w-8 h-8 object-contain" />
+          <div className="text-xl font-semibold">Find Scan</div>
+        </div>
+
         <div className="flex items-center bg-gray-900/50 rounded px-2 py-1 text-sm">
           <span className="mr-2 text-gray-300">Symbol</span>
-          <input className="bg-transparent outline-none w-36 text-white" defaultValue="BTCUSDT" />
+          <input
+            className="bg-transparent outline-none w-36 text-white"
+            defaultValue="BTCUSDT"
+          />
         </div>
+
         <div className="ml-2 flex items-center gap-2">
           <select className="bg-gray-900/50 text-white rounded px-2 py-1 text-sm">
             <option>1m</option>

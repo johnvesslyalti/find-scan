@@ -1,8 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { init, dispose, Chart as KChart } from "klinecharts";
-import { BollingerInputs, BollingerStyle } from "./BollingerSettings";
-import { OHLCV } from "@/lib/types";
+import type { BollingerInputs, BollingerStyle, OHLCV } from "@/lib/types";
 
 type ChartProps = {
   inputs: BollingerInputs;

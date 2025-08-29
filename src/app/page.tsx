@@ -1,10 +1,8 @@
 "use client"
 import { useState } from "react"
 import Chart from "@/components/Chart"
-import BollingerSettings, {
-  BollingerInputs,
-  BollingerStyle,
-} from "@/components/BollingerSettings"
+import BollingerSettings from "@/components/BollingerSettings"
+import type { BollingerInputs, BollingerStyle } from "@/lib/types"
 
 export default function Page() {
   const [showSettings, setShowSettings] = useState(false)

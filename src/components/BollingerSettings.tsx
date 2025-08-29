@@ -1,40 +1,6 @@
 "use client"
 import { useState } from "react"
-
-export type BollingerInputs = {
-  length: number
-  maType: "SMA" // for now only SMA, but keeping it extensible
-  source: "close" // only close supported
-  stdDev: number
-  offset: number
-}
-
-export type BollingerStyle = {
-  showBasis: boolean
-  basisColor: string
-  basisWidth: number
-  basisStyle: "solid" | "dashed"
-
-  showUpper: boolean
-  upperColor: string
-  upperWidth: number
-  upperStyle: "solid" | "dashed"
-
-  showLower: boolean
-  lowerColor: string
-  lowerWidth: number
-  lowerStyle: "solid" | "dashed"
-
-  showBackground: boolean
-  backgroundOpacity: number
-}
-
-type Props = {
-  inputs: BollingerInputs
-  style: BollingerStyle
-  onChange: (inputs: BollingerInputs, style: BollingerStyle) => void
-  onClose: () => void
-}
+import type { Props } from "../lib/types"
 
 export default function BollingerSettings({
   inputs,

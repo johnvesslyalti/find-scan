@@ -66,10 +66,10 @@ Candlestick + Bollinger Bands
 ![Home Page Screenshot](/public/home.png)
 
 Input Panel
-![Input Panel Screenshot](/public/cine-scope-demo.png)
+![Input Panel Screenshot](/public/inputs.png)
 
 Styles Panel
-![Styles Panel Screenshot](/public/cine-scope-demo.png)
+![Styles Panel Screenshot](/public/style.png)
 
  ⚡ Quick Start
 

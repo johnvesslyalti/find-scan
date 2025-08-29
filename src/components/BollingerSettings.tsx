@@ -17,15 +17,13 @@ export default function BollingerSettings({
     onClose()
   }
 
+  // Common Tailwind classes for inputs
   const inputClass =
-    "border rounded p-1 w-24 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
-
+    "border rounded p-1 w-full sm:w-24 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
   const numberInputClass =
-    "border rounded p-1 w-20 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
-
+    "border rounded p-1 w-full sm:w-20 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
   const selectClass =
-    "border rounded p-1 w-24 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
-
+    "border rounded p-1 w-full sm:w-24 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600"
   const checkboxClass = "w-4 h-4 accent-blue-500"
 
   return (
@@ -78,10 +76,7 @@ export default function BollingerSettings({
               <select
                 value={localInputs.maType}
                 onChange={e =>
-                  setLocalInputs({
-                    ...localInputs,
-                    maType: e.target.value as typeof localInputs.maType,
-                  })
+                  setLocalInputs({ ...localInputs, maType: e.target.value as typeof localInputs.maType })
                 }
                 className={selectClass}
               >
@@ -94,10 +89,7 @@ export default function BollingerSettings({
               <select
                 value={localInputs.source}
                 onChange={e =>
-                  setLocalInputs({
-                    ...localInputs,
-                    source: e.target.value as typeof localInputs.source,
-                  })
+                  setLocalInputs({ ...localInputs, source: e.target.value as typeof localInputs.source })
                 }
                 className={selectClass}
               >
@@ -134,64 +126,39 @@ export default function BollingerSettings({
 
         {/* Style Tab */}
         {tab === "style" && (
-          <div className="space-y-4">
-            {/* Reusable function for a style section */}
-            {[
-              {
-                title: "Basis",
-                show: "showBasis",
-                color: "basisColor",
-                width: "basisWidth",
-                style: "basisStyle",
-              },
-              {
-                title: "Upper",
-                show: "showUpper",
-                color: "upperColor",
-                width: "upperWidth",
-                style: "upperStyle",
-              },
-              {
-                title: "Lower",
-                show: "showLower",
-                color: "lowerColor",
-                width: "lowerWidth",
-                style: "lowerStyle",
-              },
+          <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-2">
+            {[ 
+              { title: "Basis", show: "showBasis", color: "basisColor", width: "basisWidth", style: "basisStyle" },
+              { title: "Upper", show: "showUpper", color: "upperColor", width: "upperWidth", style: "upperStyle" },
+              { title: "Lower", show: "showLower", color: "lowerColor", width: "lowerWidth", style: "lowerStyle" },
             ].map(section => (
-              <div key={section.title}>
+              <div key={section.title} className="border-b border-gray-200 dark:border-gray-600 pb-3">
                 <div className="font-medium mb-2">{section.title}</div>
-                <div className="space-y-2">
-                  <label className="flex items-center justify-between">
-                    <span>Visible</span>
+                <div className="grid grid-cols-2 gap-2 items-center">
+                  <label className="flex items-center gap-2">
                     <input
                       type="checkbox"
                       checked={localStyle[section.show as keyof typeof localStyle] as boolean}
                       onChange={e =>
-                        setLocalStyle({
-                          ...localStyle,
-                          [section.show]: e.target.checked,
-                        })
+                        setLocalStyle({ ...localStyle, [section.show]: e.target.checked })
                       }
                       className={checkboxClass}
                     />
+                    <span>Visible</span>
                   </label>
 
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
                     <span>Color</span>
                     <input
                       type="color"
                       value={localStyle[section.color as keyof typeof localStyle] as string}
                       onChange={e =>
-                        setLocalStyle({
-                          ...localStyle,
-                          [section.color]: e.target.value,
-                        })
+                        setLocalStyle({ ...localStyle, [section.color]: e.target.value })
                       }
                     />
                   </div>
 
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
                     <span>Width</span>
                     <input
                       type="number"
@@ -199,24 +166,18 @@ export default function BollingerSettings({
                       max={5}
                       value={localStyle[section.width as keyof typeof localStyle] as number}
                       onChange={e =>
-                        setLocalStyle({
-                          ...localStyle,
-                          [section.width]: +e.target.value,
-                        })
+                        setLocalStyle({ ...localStyle, [section.width]: +e.target.value })
                       }
                       className={numberInputClass}
                     />
                   </div>
 
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
                     <span>Style</span>
                     <select
                       value={localStyle[section.style as keyof typeof localStyle] as string}
                       onChange={e =>
-                        setLocalStyle({
-                          ...localStyle,
-                          [section.style]: e.target.value,
-                        })
+                        setLocalStyle({ ...localStyle, [section.style]: e.target.value })
                       }
                       className={selectClass}
                     >
@@ -228,12 +189,11 @@ export default function BollingerSettings({
               </div>
             ))}
 
-            {/* Background */}
-            <div>
+            {/* Background Section */}
+            <div className="border-b border-gray-200 dark:border-gray-600 pb-3">
               <div className="font-medium mb-2">Background</div>
-              <div className="space-y-2">
-                <label className="flex items-center justify-between">
-                  <span>Visible</span>
+              <div className="grid grid-cols-2 gap-2 items-center">
+                <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     checked={localStyle.showBackground}
@@ -242,8 +202,10 @@ export default function BollingerSettings({
                     }
                     className={checkboxClass}
                   />
+                  <span>Visible</span>
                 </label>
-                <div className="flex items-center justify-between gap-2">
+
+                <div className="flex items-center gap-2">
                   <span>Opacity</span>
                   <input
                     type="range"
@@ -254,6 +216,7 @@ export default function BollingerSettings({
                     onChange={e =>
                       setLocalStyle({ ...localStyle, backgroundOpacity: +e.target.value })
                     }
+                    className="w-full"
                   />
                 </div>
               </div>

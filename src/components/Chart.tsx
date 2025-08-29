@@ -100,5 +100,5 @@ export default function Chart({ inputs, style }: ChartProps) {
     };
   }, [inputs, style]); // rerun when inputs/style change
 
-  return <div id="chart" className="w-full h-[600px]" />;
+  return <div id="chart" className="w-full h-full" />;
 }

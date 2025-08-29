@@ -2,6 +2,9 @@
 import { useState } from "react"
 import Chart from "@/components/Chart"
 import BollingerSettings from "@/components/BollingerSettings"
+import TopBar from "@/components/TopBar"
+import LeftToolbar from "@/components/LeftToolbar"
+import RightPanel from "@/components/RightPanel"
 import type { BollingerInputs, BollingerStyle } from "@/lib/types"
 
 export default function Page() {
@@ -35,17 +38,32 @@ export default function Page() {
   })
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
-      {/* Chart */}
-      <Chart inputs={inputs} style={style} />
+    <div className="min-h-screen flex flex-col bg-gray-900 text-white">
+      <TopBar />
 
-      {/* Settings button */}
-      <button
-        onClick={() => setShowSettings(true)}
-        className="mt-4 px-4 py-2 rounded bg-blue-500 text-white"
-      >
-        Bollinger Settings
-      </button>
+      <div className="flex flex-1 overflow-hidden">
+        <LeftToolbar />
+
+        <main className="flex-1 p-4 flex flex-col">
+          <div className="flex-1 bg-gray-900 rounded-lg shadow-inner">
+            <Chart inputs={inputs} style={style} />
+          </div>
+
+          <div className="mt-3 flex justify-between items-center">
+            <div>
+              <button
+                onClick={() => setShowSettings(true)}
+                className="px-3 py-1 rounded bg-blue-600 text-white text-sm"
+              >
+                Bollinger Settings
+              </button>
+            </div>
+            <div className="text-sm text-gray-300">Data source: local ohlcv.json</div>
+          </div>
+        </main>
+
+        <RightPanel />
+      </div>
 
       {/* Settings Modal */}
       {showSettings && (
@@ -59,6 +77,6 @@ export default function Page() {
           onClose={() => setShowSettings(false)}
         />
       )}
-    </main>
+    </div>
   )
 }

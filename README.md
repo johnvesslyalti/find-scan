@@ -63,10 +63,13 @@ Description
  📸 Screenshots
 
 Candlestick + Bollinger Bands
-![Chart Example](home.png)
+![Home Page Screenshot](/public/home.png)
 
-Settings Panel
-![Settings Example](/home.png)
+Input Panel
+![Input Panel Screenshot](/public/cine-scope-demo.png)
+
+Styles Panel
+![Styles Panel Screenshot](/public/cine-scope-demo.png)
 
  ⚡ Quick Start
 

@@ -80,7 +80,7 @@ Description
 
  📦 KLineCharts Version
 
-    Tested with: klinecharts\@9.8.1
+     Tested with: klinecharts@^10.0.0-alpha5 (see package.json)
 
  ✅ Acceptance Criteria Checklist
 

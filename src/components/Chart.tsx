@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { init, dispose, Chart as KChart } from "klinecharts";
+import computeBollingerBands from "@/lib/indicators/bollinger";
 import type { BollingerInputs, BollingerStyle, OHLCV } from "@/lib/types";
 
 type ChartProps = {
@@ -27,8 +28,16 @@ export default function Chart({ inputs, style }: ChartProps) {
 
         chart.applyNewData(bars);
 
-        // 🔑 Here you’ll later call your computeBollingerBands(bars, inputs)
-        // and use chart.createIndicator() to draw the bands with style
+        // compute Bollinger bands and register as overlays/indicator
+        const points = computeBollingerBands(
+          bars.map(b => ({ time: b.timestamp, open: b.open, high: b.high, low: b.low, close: b.close, volume: b.volume })),
+          inputs
+        )
+
+        // For now, log a small sample to verify computation
+        console.log("bollinger sample:", points.slice(-5))
+
+        // TODO: create overlay/indicator with chart.createOverlay or chart.createIndicator
       });
 
     return () => {
